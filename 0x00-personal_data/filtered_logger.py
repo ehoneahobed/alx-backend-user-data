@@ -2,6 +2,7 @@
 """
 Script for handling Personal Data
 """
+
 from typing import List
 import re
 import logging
