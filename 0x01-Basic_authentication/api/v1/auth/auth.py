@@ -51,11 +51,6 @@ class Auth:
         Returns:
                 str: _description_
         """
-        return None
-
-    def current_user(self, request=None) -> TypeVar('User'):
-        """_summary_
-        """
         if request is None:
             return None
         # get header from the request
@@ -65,3 +60,9 @@ class Auth:
             return None
 
         return header
+
+    def current_user(self, request=None) -> TypeVar('User'):
+        """_summary_
+        """
+
+        return None
