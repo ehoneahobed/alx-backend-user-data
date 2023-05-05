@@ -20,13 +20,12 @@ def session_auth():
     users = User.search({"email": email})
     if not users or users == []:
         return jsonify({"error": "no user found for this email"}), 404
-
     for user in users:
-        if user.ia_valid_password(password):
+        if user.is_valid_password(password):
             from api.v1.app import auth
             session_id = auth.create_session(user.id)
-            response = jsonify(user.to_json())
+            resp = jsonify(user.to_json())
             session_name = os.getenv('SESSION_NAME')
-            response.set_cookie(session_name, session_id)
-            return response
+            resp.set_cookie(session_name, session_id)
+            return resp
     return jsonify({"error": "wrong password"}), 401
